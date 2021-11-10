@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/constants.dart';
 
 import 'home.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Patitas a casa',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        scaffoldBackgroundColor: verdePatitas,
       ),
       home: const login(title: 'Login'),
     );
