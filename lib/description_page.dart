@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mi_app_final/my_button.dart';
+import 'package:mi_app_final/components/alert_button.dart';
 
 class DescriptionPage extends StatelessWidget {
   //Nombre del perrito, ubicación y descripción
@@ -16,9 +16,11 @@ class DescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //Contenedor de descripción
     final descriptionBox = Container(
-      margin: EdgeInsets.symmetric(
-        vertical: 30,
-        horizontal: 30,
+      margin: EdgeInsets.only(
+        top: 30,
+        bottom: 40,
+        right: 30,
+        left: 30,
       ),
       //Texto de descripción
       child: Text(
@@ -86,7 +88,7 @@ class DescriptionPage extends StatelessWidget {
       children: <Widget>[
         title,
         descriptionBox,
-        MyButton("Alerta"),
+        AlertButton("Alerta"),
       ],
     );
 

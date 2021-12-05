@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
+class AlertButton extends StatelessWidget {
   //Texto del boton
   String buttonText = "Alerta";
 
-  MyButton(this.buttonText);
+  AlertButton(this.buttonText);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       //Acción a ejecutar en caso de tap
       onTap: () {
-        //Muestra una breve snackbar con un mensaje
+        //Muestra una breve snackbar con un mensaje (solo para prueba de funcionamiento)
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Alerta enviada"),
@@ -22,8 +22,6 @@ class MyButton extends StatelessWidget {
       //Boton
       child: Container(
         margin: EdgeInsets.only(
-          top: 10,
-          bottom: 20,
           left: 20,
           right: 20,
         ),

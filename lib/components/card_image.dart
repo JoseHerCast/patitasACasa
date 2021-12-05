@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_app_final/components/share_button.dart';
 
 class CardImage extends StatelessWidget {
   //Imagen del perrito perdido
@@ -33,6 +34,12 @@ class CardImage extends StatelessWidget {
       ),
     );
 
-    return card;
+    return Stack(
+      alignment: Alignment(0.95, 0.95),
+      children: [
+        card,
+        ShareButton(),
+      ],
+    );
   }
 }
