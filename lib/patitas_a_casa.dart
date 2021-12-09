@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mi_app_final/screens/notifications.dart';
-import 'package:mi_app_final/screens/profile.dart';
-import 'package:mi_app_final/screens/search.dart';
+import 'screens/notifications.dart';
+import 'screens/profile.dart';
+import 'screens/search.dart';
 
 import 'screens/home.dart';
 
 class PatitasACasa extends StatefulWidget {
-  PatitasACasa({Key? key}) : super(key: key);
+  const PatitasACasa({Key? key}) : super(key: key);
 
   @override
   _PatitasACasaState createState() => _PatitasACasaState();
@@ -17,10 +17,10 @@ class _PatitasACasaState extends State<PatitasACasa> {
   int indexTap = 0;
   //Arreglo de vistas
   final List<Widget> navButtons = [
-    Home(),
-    Search(),
-    Notifications(),
-    Profile(),
+    const Home(),
+    const Search(),
+    const Notifications(),
+    const Profile(),
   ];
 
   @override
@@ -43,7 +43,7 @@ class _PatitasACasaState extends State<PatitasACasa> {
           },
           //Indice del item
           currentIndex: indexTap,
-          items: [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Inicio",

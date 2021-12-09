@@ -1,18 +1,18 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GradientBack extends StatelessWidget {
   //Titulo de la appbar personalizada
-  String title = "Cercanos";
+  final String title;
 
-  GradientBack(this.title);
+  const GradientBack(this.title, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //Gradiente de color con un titulo (appbar personalizada)
     return Container(
       height: 300,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
             Colors.deepOrange,
@@ -27,14 +27,14 @@ class GradientBack extends StatelessWidget {
       //Texto del gradiente
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 30,
           fontFamily: "Lato-Regular",
           fontWeight: FontWeight.w700,
         ),
       ),
-      alignment: Alignment(-0.8, -0.6),
+      alignment: const Alignment(-0.8, -0.6),
     );
   }
 }

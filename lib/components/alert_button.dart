@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertButton extends StatelessWidget {
   //Texto del boton
-  String buttonText = "Alerta";
+  final String buttonText;
 
-  AlertButton(this.buttonText);
+  const AlertButton(this.buttonText, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +14,21 @@ class AlertButton extends StatelessWidget {
       onTap: () {
         //Muestra una breve snackbar con un mensaje (solo para prueba de funcionamiento)
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text("Alerta enviada"),
           ),
         );
       },
       //Boton
       child: Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           left: 20,
           right: 20,
         ),
         height: 50,
         width: 180,
         //Estilo del boton
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(30),
           ),
@@ -47,7 +47,7 @@ class AlertButton extends StatelessWidget {
         child: Center(
           child: Text(
             buttonText,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontFamily: "Lato-Regular",
               fontWeight: FontWeight.bold,

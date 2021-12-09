@@ -1,22 +1,24 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
-import 'package:mi_app_final/components/alert_button.dart';
+//import 'package:flutter/painting.dart';
+//import 'package:flutter/widgets.dart';
+import 'components/alert_button.dart';
 
 class DescriptionPage extends StatelessWidget {
   //Nombre del perrito, ubicación y descripción
-  late String dogName;
-  late String placeName;
-  late String description;
+  final String dogName;
+  final String placeName;
+  final String description;
 
-  DescriptionPage(this.dogName, this.placeName, this.description);
+  const DescriptionPage(this.dogName, this.placeName, this.description,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //Contenedor de descripción
     final descriptionBox = Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         top: 30,
         bottom: 40,
         right: 30,
@@ -24,8 +26,8 @@ class DescriptionPage extends StatelessWidget {
       ),
       //Texto de descripción
       child: Text(
-        this.description,
-        style: TextStyle(
+        description,
+        style: const TextStyle(
           fontFamily: "Lato-Regular",
           fontSize: 15,
           fontWeight: FontWeight.normal,
@@ -33,22 +35,22 @@ class DescriptionPage extends StatelessWidget {
       ),
     );
     //Último lugar en que se vió
-    final last_view = Row(
+    final lastView = Row(
       children: [
         //Icono de lugar
         Container(
-          margin: EdgeInsets.only(top: 320, left: 10),
-          child: Icon(
+          margin: const EdgeInsets.only(top: 320, left: 10),
+          child: const Icon(
             Icons.place,
             color: Colors.grey,
           ),
         ),
         //Nombre del lugar
         Container(
-          margin: EdgeInsets.only(top: 320, left: 5),
+          margin: const EdgeInsets.only(top: 320, left: 5),
           child: Text(
-            this.placeName,
-            style: TextStyle(
+            placeName,
+            style: const TextStyle(
                 fontFamily: "Lato-Regular",
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
@@ -62,14 +64,14 @@ class DescriptionPage extends StatelessWidget {
       children: <Widget>[
         //Nombre del perrito
         Container(
-          margin: EdgeInsets.only(
+          margin: const EdgeInsets.only(
             right: 10,
             left: 30,
             top: 320,
           ),
           child: Text(
-            this.dogName,
-            style: TextStyle(
+            dogName,
+            style: const TextStyle(
               fontFamily: "Lato-Regular",
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -79,7 +81,7 @@ class DescriptionPage extends StatelessWidget {
         ),
 
         //Ultimo lugar donde se vió
-        last_view,
+        lastView,
       ],
     );
     //Devolvemos una pagina de descripción con nombre del perrito, ultima ubicación donde se vió, descripción, comentarios de usuarios, etc.
@@ -88,7 +90,7 @@ class DescriptionPage extends StatelessWidget {
       children: <Widget>[
         title,
         descriptionBox,
-        AlertButton("Alerta"),
+        const AlertButton("Alerta"),
       ],
     );
 

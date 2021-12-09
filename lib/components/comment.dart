@@ -1,26 +1,28 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Comment extends StatelessWidget {
   //Imágen de perfil, nombre de usuario, detalles de actividad y comentario
-  String profileImage;
-  String userName;
-  String details;
-  String commentary;
+  final String profileImage;
+  final String userName;
+  final String details;
+  final String commentary;
 
-  Comment(this.profileImage, this.userName, this.details, this.commentary);
+  const Comment(this.profileImage, this.userName, this.details, this.commentary,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //Comentario del usuario
     final userComment = Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         left: 20,
       ),
       child: Text(
-        this.commentary,
+        commentary,
         textAlign: TextAlign.left,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "Lato-Regular",
           fontSize: 15,
           fontWeight: FontWeight.w800,
@@ -30,13 +32,13 @@ class Comment extends StatelessWidget {
 
     //Información del usuario
     final userInfo = Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         left: 20,
       ),
       child: Text(
-        this.details,
+        details,
         textAlign: TextAlign.left,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "Lato-Regular",
           fontSize: 13,
           color: Colors.grey,
@@ -46,13 +48,13 @@ class Comment extends StatelessWidget {
 
     //Nombre de usuario
     final name = Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         left: 20,
       ),
       child: Text(
-        this.userName,
+        userName,
         textAlign: TextAlign.left,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "Lato-Regular",
           fontSize: 15,
         ),
@@ -70,7 +72,7 @@ class Comment extends StatelessWidget {
 
     //Foto de perfil del comentario/review
     final profilePhoto = Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         top: 20,
         left: 20,
       ),
@@ -80,7 +82,7 @@ class Comment extends StatelessWidget {
         shape: BoxShape.circle,
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(this.profileImage),
+          image: AssetImage(profileImage),
         ),
       ),
     );

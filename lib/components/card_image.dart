@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mi_app_final/components/share_button.dart';
+import 'share_button.dart';
 
 class CardImage extends StatelessWidget {
   //Imagen del perrito perdido
-  String dogImage;
+  final String dogImage;
 
-  CardImage(this.dogImage);
+  const CardImage(this.dogImage, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +13,18 @@ class CardImage extends StatelessWidget {
     final card = Container(
       height: 350,
       width: 250,
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         top: 80,
         left: 20,
       ),
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage(this.dogImage),
+          image: AssetImage(dogImage),
         ),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         shape: BoxShape.rectangle,
-        boxShadow: <BoxShadow>[
+        boxShadow: const <BoxShadow>[
           BoxShadow(
             color: Colors.black38,
             blurRadius: 15,
@@ -35,10 +35,10 @@ class CardImage extends StatelessWidget {
     );
 
     return Stack(
-      alignment: Alignment(0.95, 0.95),
+      alignment: const Alignment(0.95, 0.95),
       children: [
         card,
-        ShareButton(),
+        const ShareButton(),
       ],
     );
   }
