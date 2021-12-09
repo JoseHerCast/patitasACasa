@@ -4,6 +4,7 @@ import 'package:proyecto_final/screens/welcome/components/background.dart';
 import 'package:proyecto_final/components/roundedButton.dart';
 
 class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     //Nos permite obtener el tamaño del contexto (pantalla del telefono)
@@ -27,7 +28,7 @@ class Body extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 20),
             child: Image.asset(
-              "../assets/patitas.png",
+              "assets/images/patitas.png",
               height: size.height * 0.3,
             ),
           ),
@@ -75,7 +76,7 @@ Flex(
                       bottom: 30,
                     ),
                     child: Image.asset(
-                      "../assets/patitas.png",
+                      "assets/images/patitas.png",
                       fit: BoxFit.scaleDown,
                     ),
                   ),
