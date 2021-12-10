@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_final/constants.dart';
-import 'package:proyecto_final/screens/welcome/components/background.dart';
-import 'package:proyecto_final/components/roundedButton.dart';
+import '/constants.dart';
+import '/screens/welcome/components/background.dart';
+import '/components/roundedButton.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
