@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682107704587",
+    "project_id": "patitasacasa-7882d",
+    "storage_bucket": "patitasacasa-7882d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682107704587:android:c63680da9b714976943e0e",
+        "android_client_info": {
+          "package_name": "com.patitas.A.casa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682107704587-0tfg4f4urkg0r4bhchdkld1f2o3oes0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByBqx46BhKvOHHgkWhK0HZYTrgZ5fPwao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682107704587-0tfg4f4urkg0r4bhchdkld1f2o3oes0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

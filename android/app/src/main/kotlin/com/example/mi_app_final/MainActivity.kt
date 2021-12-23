@@ -1,4 +1,4 @@
-package com.example.mi_app_final
+package com.patitas.A.casa
 
 import io.flutter.embedding.android.FlutterActivity
 
