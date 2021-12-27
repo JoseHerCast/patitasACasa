@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patitas_a_casa/screens/settings.dart';
 import 'screens/notifications.dart';
 import 'screens/profile.dart';
 import 'screens/search.dart';
@@ -16,7 +17,7 @@ class _PatitasACasaState extends State<PatitasACasa> {
   //Indice del navItem
   int indexTap = 0;
   //Arreglo de vistas
-  final List<Widget> navButtons = [
+  final List<Widget> screensArray = [
     const Home(),
     const Search(),
     const Notifications(),
@@ -27,7 +28,7 @@ class _PatitasACasaState extends State<PatitasACasa> {
   Widget build(BuildContext context) {
     return Scaffold(
       //El body depende de nuestro arreglo de vistas y el indice del navItem seleccionado
-      body: navButtons[indexTap],
+      body: screensArray[indexTap],
       //Barra de navegación
       bottomNavigationBar: Theme(
         data: ThemeData(
