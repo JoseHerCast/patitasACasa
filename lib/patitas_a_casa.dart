@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 //import 'screens/settings.dart';
 import 'screens/notifications.dart';
 import 'screens/profile.dart';
-import 'screens/search.dart';
+//import 'screens/search.dart';
 
 import 'screens/home.dart';
 
@@ -19,7 +19,7 @@ class _PatitasACasaState extends State<PatitasACasa> {
   //Arreglo de vistas
   final List<Widget> screensArray = [
     const Home(),
-    const Search(),
+    //const Search(),
     const Notifications(),
     const Profile(),
   ];
@@ -49,10 +49,10 @@ class _PatitasACasaState extends State<PatitasACasa> {
               icon: Icon(Icons.home),
               label: "Inicio",
             ),
-            BottomNavigationBarItem(
+            /* BottomNavigationBarItem(
               icon: Icon(Icons.search),
               label: "Buscar",
-            ),
+            ), */
             BottomNavigationBarItem(
               icon: Icon(Icons.notifications),
               label: "Notificaciones",
