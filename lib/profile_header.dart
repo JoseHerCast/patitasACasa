@@ -19,7 +19,7 @@ class ProfileHeader extends StatelessWidget {
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
-        GradientBack("Perfil"),
+        const GradientBack("Perfil"),
         Positioned(
           top: 110,
           left: 40,
@@ -31,9 +31,9 @@ class ProfileHeader extends StatelessWidget {
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.grey.shade800,
-                    backgroundImage: AssetImage("assets/img/profile.jpg"),
+                    backgroundImage: const AssetImage("assets/img/profile.jpg"),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: -5,
                     top: 60,
                     child: EditButton(),
@@ -82,24 +82,24 @@ class ProfileHeader extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   horizontal: 30,
                 ),
                 child: Column(
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.settings,
                       ),
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => Settings(),
+                            builder: (context) => const Settings(),
                           ),
                         );
                       },
                     ),
-                    Text(
+                    const Text(
                       "Ajustes",
                       style: TextStyle(
                         fontFamily: "Lato-Regular",
@@ -110,18 +110,18 @@ class ProfileHeader extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   horizontal: 30,
                 ),
                 child: Column(
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.lightbulb,
                       ),
                       onPressed: () {},
                     ),
-                    Text(
+                    const Text(
                       "Nueva alerta",
                       style: TextStyle(
                         fontFamily: "Lato-Regular",
@@ -132,16 +132,16 @@ class ProfileHeader extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   horizontal: 30,
                 ),
                 child: Column(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.pets),
+                      icon: const Icon(Icons.pets),
                       onPressed: () {},
                     ),
-                    Text(
+                    const Text(
                       "Mis doggies",
                       style: TextStyle(
                         fontFamily: "Lato-Regular",

@@ -44,13 +44,13 @@ class ProfileDescription extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(
+          margin: const EdgeInsets.only(
             top: 320,
             left: 5,
           ),
-          child: Text(
+          child: const Text(
             "Vive en",
-            style: const TextStyle(
+            style: TextStyle(
                 fontFamily: "Lato-Regular",
                 fontSize: 25,
                 fontWeight: FontWeight.bold),

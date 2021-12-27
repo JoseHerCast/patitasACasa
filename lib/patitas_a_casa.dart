@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:patitas_a_casa/screens/settings.dart';
+//import 'screens/settings.dart';
 import 'screens/notifications.dart';
 import 'screens/profile.dart';
 import 'screens/search.dart';
