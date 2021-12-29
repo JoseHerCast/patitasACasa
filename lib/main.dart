@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
     ));
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Patitas a casa',
       home: Scaffold(
         body: LoginScreen(),
