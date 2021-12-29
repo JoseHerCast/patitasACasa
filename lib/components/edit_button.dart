@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patitas_a_casa/image_options.dart';
 
 class EditButton extends StatefulWidget {
   const EditButton({Key? key}) : super(key: key);
@@ -24,11 +25,9 @@ class _EditButtonState extends State<EditButton> {
       ),
       //Funcionalidad
       onPressed: () {
-        //Muestra una breve snackbar con un mensaje (solo para prueba de funcionamiento)
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Cambio de imagen de perfil"),
-          ),
+        showModalBottomSheet(
+          context: context,
+          builder: ((builder) => ImageOptions()),
         );
       },
     );

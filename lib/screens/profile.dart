@@ -4,9 +4,14 @@ import 'package:patitas_a_casa/profile_header_appbar.dart';
 import '../profile_description.dart';
 import '../statistics.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Stack(
