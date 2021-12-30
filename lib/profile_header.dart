@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:patitas_a_casa/screens/settings.dart';
-import 'components/edit_button.dart';
 import 'components/gradient_background.dart';
 
-class ProfileHeader extends StatelessWidget {
+class ProfileHeader extends StatefulWidget {
   const ProfileHeader({
     Key? key,
     required this.userName,
@@ -12,6 +14,14 @@ class ProfileHeader extends StatelessWidget {
 
   final String userName;
   final String eMail;
+
+  @override
+  State<ProfileHeader> createState() => _ProfileHeaderState();
+}
+
+class _ProfileHeaderState extends State<ProfileHeader> {
+  late XFile? imageFile = null;
+  final ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +41,94 @@ class ProfileHeader extends StatelessWidget {
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.grey.shade800,
-                    backgroundImage: const AssetImage("assets/img/profile.jpg"),
+                    backgroundImage: imageFile == null
+                        ? AssetImage("assets/img/profile.jpg")
+                        : Image.file(File(imageFile!.path)).image,
                   ),
-                  const Positioned(
+                  Positioned(
                     left: -5,
                     top: 60,
-                    child: EditButton(),
+                    child: FloatingActionButton(
+                      //Estilo del boton
+                      backgroundColor: Colors.orange.withAlpha(150),
+                      mini: true,
+                      tooltip: "Editar",
+                      child: const Icon(
+                        Icons.create,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                      //Funcionalidad
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: ((builder) => Container(
+                                height: 100,
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 20,
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "Elige tu imagen",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontFamily: "Lato-Regular",
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                            right: 20,
+                                          ),
+                                          child: TextButton.icon(
+                                            onPressed: () {
+                                              takePhoto(ImageSource.camera);
+                                            },
+                                            icon: Icon(Icons.camera),
+                                            label: Text(
+                                              "Camara",
+                                              style: TextStyle(
+                                                fontFamily: "Lato-Regular",
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                            left: 20,
+                                          ),
+                                          child: TextButton.icon(
+                                            onPressed: () {
+                                              takePhoto(ImageSource.gallery);
+                                            },
+                                            icon: Icon(Icons.image),
+                                            label: Text(
+                                              "Galería",
+                                              style: TextStyle(
+                                                fontFamily: "Lato-Regular",
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -48,7 +140,7 @@ class ProfileHeader extends StatelessWidget {
                       left: 25,
                     ),
                     child: Text(
-                      userName,
+                      widget.userName,
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                         fontFamily: "Lato-Regular",
@@ -62,7 +154,7 @@ class ProfileHeader extends StatelessWidget {
                       left: 25,
                     ),
                     child: Text(
-                      eMail,
+                      widget.eMail,
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                         fontFamily: "Lato-Regular",
@@ -156,5 +248,15 @@ class ProfileHeader extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await picker.pickImage(
+      source: source,
+    );
+    setState(() {
+      imageFile = pickedFile;
+      Navigator.pop(context);
+    });
   }
 }
