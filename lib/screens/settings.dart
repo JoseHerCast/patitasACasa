@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatelessWidget {
@@ -20,14 +20,14 @@ class Settings extends StatelessWidget {
       body: ListView(
         children: [
           Column(
-            children: [
+            children: const [
               SettingsOption(
                 description: "Cambiar nombre de perfil",
                 icon: Icons.person,
               ),
               SettingsOption(
-                description: "Cambiar correo",
-                icon: Icons.mail,
+                description: "Cambiar Ciudad",
+                icon: Icons.add_location,
               ),
               SettingsOption(
                 description: "Cerrar sesion",
@@ -77,7 +77,7 @@ class SettingsOption extends StatelessWidget {
               ),
               child: Text(
                 description,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "Lato-Regular",
                   fontSize: 16,
                 ),

@@ -42,7 +42,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                     radius: 50,
                     backgroundColor: Colors.grey.shade800,
                     backgroundImage: imageFile == null
-                        ? AssetImage("assets/img/profile.jpg")
+                        ? const AssetImage("assets/img/profile.jpg")
                         : Image.file(File(imageFile!.path)).image,
                   ),
                   Positioned(
@@ -65,20 +65,20 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                           builder: ((builder) => Container(
                                 height: 100,
                                 width: MediaQuery.of(context).size.width,
-                                margin: EdgeInsets.symmetric(
+                                margin: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                   vertical: 20,
                                 ),
                                 child: Column(
                                   children: <Widget>[
-                                    Text(
+                                    const Text(
                                       "Elige tu imagen",
                                       style: TextStyle(
                                         fontSize: 20,
                                         fontFamily: "Lato-Regular",
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Row(
@@ -86,15 +86,15 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                             right: 20,
                                           ),
                                           child: TextButton.icon(
                                             onPressed: () {
                                               takePhoto(ImageSource.camera);
                                             },
-                                            icon: Icon(Icons.camera),
-                                            label: Text(
+                                            icon: const Icon(Icons.camera),
+                                            label: const Text(
                                               "Camara",
                                               style: TextStyle(
                                                 fontFamily: "Lato-Regular",
@@ -104,15 +104,15 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                             left: 20,
                                           ),
                                           child: TextButton.icon(
                                             onPressed: () {
                                               takePhoto(ImageSource.gallery);
                                             },
-                                            icon: Icon(Icons.image),
-                                            label: Text(
+                                            icon: const Icon(Icons.image),
+                                            label: const Text(
                                               "Galería",
                                               style: TextStyle(
                                                 fontFamily: "Lato-Regular",
