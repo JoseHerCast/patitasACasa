@@ -1,9 +1,17 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:patitas_a_casa/screens/settings.dart';
 import 'components/gradient_background.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
+import 'package:patitas_a_casa/login.dart';
+import 'package:path_provider/path_provider.dart';
+
+firebase_storage.FirebaseStorage storage =
+    firebase_storage.FirebaseStorage.instance;
+
+String appDirectory = "";
 
 class ProfileHeader extends StatefulWidget {
   const ProfileHeader({
@@ -20,11 +28,12 @@ class ProfileHeader extends StatefulWidget {
 }
 
 class _ProfileHeaderState extends State<ProfileHeader> {
-  late XFile? imageFile = null;
+  late XFile? imageFile;
   final ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
+    downloadUserImage();
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
@@ -39,12 +48,13 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                 clipBehavior: Clip.none,
                 children: [
                   CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.grey.shade800,
-                    backgroundImage: imageFile == null
-                        ? const AssetImage("assets/img/profile.jpg")
-                        : Image.file(File(imageFile!.path)).image,
-                  ),
+                      radius: 50,
+                      backgroundColor: Colors.grey.shade800,
+                      backgroundImage:
+                          const AssetImage("assets/img/default.jpeg"),
+                      foregroundImage: Image.file(
+                              File("$appDirectory/${uid.toString()}.jpg"))
+                          .image),
                   Positioned(
                     left: -5,
                     top: 60,
@@ -256,7 +266,46 @@ class _ProfileHeaderState extends State<ProfileHeader> {
     );
     setState(() {
       imageFile = pickedFile;
+      String newPath = '$appDirectory/${uid.toString()}.jpg';
+      File(imageFile!.path).copySync(newPath);
+      debugPrint("Nueva foto copiada a $newPath");
+      uploadImage(imageFile!);
       Navigator.pop(context);
     });
+  }
+
+  //Upload of User Image
+  Future<void> uploadImage(XFile pickedFile) async {
+    String filePath = pickedFile.path;
+    await uploadFile(filePath);
+  }
+
+  Future<void> uploadFile(String filePath) async {
+    File file = File(filePath);
+    try {
+      await firebase_storage.FirebaseStorage.instance
+          .ref('${uid.toString()}/userImage.jpg')
+          .putFile(file);
+    } on firebase_core.FirebaseException catch (e) {
+      e.code == 'canceled';
+    }
+  }
+
+  //Download of the User Image
+  Future<void> downloadUserImage() async {
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    appDirectory = appDocDir.path;
+    debugPrint("Obtenemos la ruta de la app");
+    File downloadToFile = File('${appDocDir.path}/${uid.toString()}.jpg');
+    try {
+      await firebase_storage.FirebaseStorage.instance
+          .ref('${uid.toString()}/userImage.jpg')
+          .writeToFile(downloadToFile);
+      debugPrint(
+          "Imagen ${uid.toString()}/userImage.jpg descargada en $downloadToFile");
+    } on firebase_core.FirebaseException catch (e) {
+      e.code == 'canceled';
+      debugPrint(e.toString());
+    }
   }
 }

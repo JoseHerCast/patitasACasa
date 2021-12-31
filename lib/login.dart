@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'patitas_a_casa.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-//Local test users
-/*const users = {
-  'test@gmail.com': '12345',
-  'abc@gmail.com': 'abc',
-};*/
+//Variable that saves the user's email for all the app
+var uid = "";
 
 FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -18,19 +16,9 @@ class LoginScreen extends StatelessWidget {
 
   Future<String?> _authUser(LoginData data) async {
     debugPrint('Email: ${data.name}, Contraseña: ${data.password}');
-    /*return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(data.name)) {
-        return 'Este usuario no existe';
-      }
-      if (users[data.name] != data.password) {
-        return 'Contraseña incorrecta';
-      }
-      return null;
-    });*/
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: data.name, password: data.password);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: data.name, password: data.password);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return 'Este usuario no existe';
@@ -38,18 +26,15 @@ class LoginScreen extends StatelessWidget {
         return 'Contraseña incorrecta';
       }
     }
+    uid = data.name; //saves the email
     return null;
   }
 
   Future<String?> _signupUser(SignupData data) async {
     debugPrint('Email: ${data.name}, Contraseña: ${data.password}');
-    /*return Future.delayed(loginTime).then((_) {
-      return null;
-    });*/
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: data.name!, password: data.password!);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: data.name!, password: data.password!);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return 'La contraseña es muy débil!';
@@ -59,17 +44,23 @@ class LoginScreen extends StatelessWidget {
     } catch (e) {
       debugPrint("$e");
     }
+    // Creates a document for the new user
+    DocumentReference newUser =
+        FirebaseFirestore.instance.collection('Usuarios').doc(data.name);
+    newUser
+        .set({
+          'city': " ",
+          'name': "usuario",
+          'description': "Agrega una descripción aquí"
+        })
+        .then((value) => debugPrint("Usuario Agregado"))
+        .catchError((error) => debugPrint("Error al agregar usuario: $error"));
+    uid = data.name!; //saves the email
     return null;
   }
 
   Future<String?> _recoverPassword(String name) async {
     debugPrint('Email: $name');
-    /*return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
-        return 'Este correo no tiene una cuenta asociada';
-      }
-      return null;
-    });*/
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: name);
     } on FirebaseAuthException catch (e) {
