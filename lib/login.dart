@@ -12,8 +12,6 @@ FirebaseAuth auth = FirebaseAuth.instance;
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
-  Duration get loginTime => const Duration(milliseconds: 2250);
-
   Future<String?> _authUser(LoginData data) async {
     debugPrint('Email: ${data.name}, Contraseña: ${data.password}');
     try {
