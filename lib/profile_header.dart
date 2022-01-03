@@ -12,6 +12,7 @@ firebase_storage.FirebaseStorage storage =
     firebase_storage.FirebaseStorage.instance;
 
 String appDirectory = "";
+bool imageTaken = false;
 
 class ProfileHeader extends StatefulWidget {
   const ProfileHeader({
@@ -33,7 +34,10 @@ class _ProfileHeaderState extends State<ProfileHeader> {
 
   @override
   Widget build(BuildContext context) {
-    downloadUserImage();
+    if (!imageTaken) {
+      downloadUserImage();
+    }
+
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
@@ -265,9 +269,10 @@ class _ProfileHeaderState extends State<ProfileHeader> {
       source: source,
     );
     setState(() {
+      imageTaken = true;
       imageFile = pickedFile;
       String newPath = '$appDirectory/${uid.toString()}.jpg';
-      File(imageFile!.path).copySync(newPath);
+      File(imageFile!.path).renameSync(newPath);
       debugPrint("Nueva foto copiada a $newPath");
       uploadImage(imageFile!);
       Navigator.pop(context);
@@ -278,6 +283,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   Future<void> uploadImage(XFile pickedFile) async {
     String filePath = pickedFile.path;
     await uploadFile(filePath);
+    imageTaken = true;
   }
 
   Future<void> uploadFile(String filePath) async {
