@@ -120,9 +120,14 @@ class SettingsOption extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (builder) => AlertDialog(
-                        content: Column(children: [
+                        //insetPadding: EdgeInsets.zero,
+                        contentTextStyle: const TextStyle(
+                            fontFamily: "Lato-Regular", fontSize: 20),
+                        content:
+                            Column(mainAxisSize: MainAxisSize.min, children: [
                           TextField(
-                            minLines: null,
+                            minLines: 1,
+                            maxLines: 10,
                             decoration: InputDecoration(
                                 enabledBorder: const OutlineInputBorder(
                                     borderRadius: BorderRadius.all(
