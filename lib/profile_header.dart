@@ -271,9 +271,6 @@ class _ProfileHeaderState extends State<ProfileHeader> {
     setState(() {
       imageTaken = true;
       imageFile = pickedFile;
-      String newPath = '$appDirectory/${uid.toString()}.jpg';
-      File(imageFile!.path).renameSync(newPath);
-      debugPrint("Nueva foto copiada a $newPath");
       uploadImage(imageFile!);
       Navigator.pop(context);
     });
@@ -289,12 +286,14 @@ class _ProfileHeaderState extends State<ProfileHeader> {
   Future<void> uploadFile(String filePath) async {
     File file = File(filePath);
     try {
-      await firebase_storage.FirebaseStorage.instance
-          .ref('${uid.toString()}/userImage.jpg')
-          .putFile(file);
+      await storage.ref('${uid.toString()}/userImage.jpg').putFile(file);
     } on firebase_core.FirebaseException catch (e) {
       e.code == 'canceled';
     }
+    debugPrint("Nueva foto subida a ${uid.toString()}/userImage.jpg");
+    String newPath = '$appDirectory/${uid.toString()}.jpg';
+    File(filePath).renameSync(newPath);
+    debugPrint("Nueva foto copiada a $newPath");
   }
 
   //Download of the User Image
@@ -304,7 +303,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
     debugPrint("Obtenemos la ruta de la app");
     File downloadToFile = File('${appDocDir.path}/${uid.toString()}.jpg');
     try {
-      await firebase_storage.FirebaseStorage.instance
+      await storage
           .ref('${uid.toString()}/userImage.jpg')
           .writeToFile(downloadToFile);
       debugPrint(
