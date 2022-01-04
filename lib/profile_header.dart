@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:patitas_a_casa/screens/doggies.dart';
+import 'package:patitas_a_casa/screens/new_alert.dart';
 import 'package:patitas_a_casa/screens/settings.dart';
 import 'components/gradient_background.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -229,7 +230,7 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const Doggies(),
+                            builder: (context) => const NewAlert(),
                           ),
                         );
                       },
@@ -252,7 +253,13 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.pets),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const Doggies(),
+                          ),
+                        );
+                      },
                     ),
                     const Text(
                       "Mis doggies",
