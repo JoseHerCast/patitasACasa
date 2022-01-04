@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:patitas_a_casa/screens/doggies.dart';
 import 'package:patitas_a_casa/screens/settings.dart';
 import 'components/gradient_background.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
@@ -225,7 +226,13 @@ class _ProfileHeaderState extends State<ProfileHeader> {
                       icon: const Icon(
                         Icons.lightbulb,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const Doggies(),
+                          ),
+                        );
+                      },
                     ),
                     const Text(
                       "Nueva alerta",
