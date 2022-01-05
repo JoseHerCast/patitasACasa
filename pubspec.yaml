@@ -50,8 +50,9 @@ dependencies:
   firebase_storage: ^10.2.4
   path_provider: ^2.0.8
   intl_phone_field: ^2.1.0
-  places_service: ^0.1.0
+  flutter_local_notifications: ^9.2.0
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -116,6 +117,7 @@ flutter:
     - assets/img/doggie6.jpg
     - assets/img/patitas.png
     - assets/img/default.jpeg
+    - assets/img/default2.jpg
   
   fonts:
     - family: Lato

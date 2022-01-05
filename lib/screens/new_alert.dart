@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/painting.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter/material.dart';
+import 'package:patitas_a_casa/notification_api.dart';
 
 class NewAlert extends StatefulWidget {
   const NewAlert({Key? key}) : super(key: key);
@@ -16,7 +20,11 @@ class _NewAlertState extends State<NewAlert> {
   late String doggieAge;
   late String lastView;
   late String email;
+  late String doggieDescription;
   late var phoneNumber;
+
+  late XFile? imageFile = null;
+  final ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +66,10 @@ class _NewAlertState extends State<NewAlert> {
             buildEmail("Correo"),
             SizedBox(height: 16),
             buildPhoneNumber("Número de teléfono"),
+            SizedBox(height: 16),
+            buildDescription("Introduce una descripción"),
+            SizedBox(height: 16),
+            buildImage(),
             SizedBox(height: 16),
             submit("Crear alerta"),
           ],
@@ -114,6 +126,13 @@ class _NewAlertState extends State<NewAlert> {
         labelText: title,
         border: OutlineInputBorder(),
       ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "Campo requerido";
+        } else {
+          return null;
+        }
+      },
       onSaved: (value) => setState(() => lastView = value!),
     );
   }
@@ -153,15 +172,83 @@ class _NewAlertState extends State<NewAlert> {
     );
   }
 
+  Widget buildDescription(String title) {
+    return TextFormField(
+      minLines: 10,
+      maxLines: 15,
+      keyboardType: TextInputType.name,
+      decoration: InputDecoration(
+        labelText: title,
+        border: OutlineInputBorder(),
+      ),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "Campo requerido";
+        } else {
+          return null;
+        }
+      },
+      onSaved: (value) => setState(() => doggieDescription = value!),
+    );
+  }
+
+  Widget buildImage() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 300,
+      child: InkWell(
+        onTap: () {
+          takePhoto(ImageSource.gallery);
+        },
+        child: Image(
+          fit: BoxFit.contain,
+          image: imageFile == null
+              ? AssetImage("assets/img/default2.jpg")
+              : Image.file(
+                  File(imageFile!.path),
+                ).image,
+        ),
+      ),
+    );
+  }
+
   Widget submit(String title) {
     return TextButton(
+      style: TextButton.styleFrom(
+        primary: Colors.white,
+        backgroundColor: Colors.deepOrange,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
       onPressed: () {
         final isValid = formKey.currentState!.validate();
         if (isValid) {
           formKey.currentState!.save();
+/*           Navigator.of(context).pop(
+            MaterialPageRoute(
+              builder: (context) => const NewAlert(),
+            ),
+          ); */
+          NotificationApi.showNotification(
+            title: 'Alerta creada',
+            body: 'Esta es una alerta de prueba',
+          );
         }
       },
-      child: Text("Submit"),
+      child: Text(
+        "Submit",
+        style: TextStyle(
+          fontFamily: "Lato-Regular",
+        ),
+      ),
     );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
+    setState(() {
+      imageFile = pickedFile;
+    });
   }
 }
