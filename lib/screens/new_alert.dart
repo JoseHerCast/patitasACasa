@@ -57,6 +57,8 @@ class _NewAlertState extends State<NewAlert> {
         child: ListView(
           padding: EdgeInsets.all(16),
           children: [
+            buildImage(),
+            SizedBox(height: 16),
             buildDoggieName("Doggiename"),
             SizedBox(height: 16),
             buildAge("Edad"),
@@ -67,9 +69,7 @@ class _NewAlertState extends State<NewAlert> {
             SizedBox(height: 16),
             buildPhoneNumber("Número de teléfono"),
             SizedBox(height: 16),
-            buildDescription("Introduce una descripción"),
-            SizedBox(height: 16),
-            buildImage(),
+            buildDescription("Introduce una breve descripción"),
             SizedBox(height: 16),
             submit("Crear alerta"),
           ],
@@ -174,8 +174,8 @@ class _NewAlertState extends State<NewAlert> {
 
   Widget buildDescription(String title) {
     return TextFormField(
-      minLines: 10,
-      maxLines: 15,
+      minLines: 5,
+      maxLines: 10,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: title,
@@ -225,14 +225,14 @@ class _NewAlertState extends State<NewAlert> {
         final isValid = formKey.currentState!.validate();
         if (isValid) {
           formKey.currentState!.save();
-/*           Navigator.of(context).pop(
+          NotificationApi.showNotification(
+            title: 'Alerta creada',
+            body: 'Se emtió la alerta para ' + doggieName,
+          );
+          Navigator.of(context).pop(
             MaterialPageRoute(
               builder: (context) => const NewAlert(),
             ),
-          ); */
-          NotificationApi.showNotification(
-            title: 'Alerta creada',
-            body: 'Esta es una alerta de prueba',
           );
         }
       },

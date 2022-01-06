@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patitas_a_casa/notification_api.dart';
 //import 'screens/settings.dart';
 import 'screens/notifications.dart';
 import 'screens/profile.dart';
@@ -23,6 +24,11 @@ class _PatitasACasaState extends State<PatitasACasa> {
     const Notifications(),
     const Profile(),
   ];
+
+  void initState() {
+    super.initState();
+    NotificationApi.init();
+  }
 
   @override
   Widget build(BuildContext context) {
