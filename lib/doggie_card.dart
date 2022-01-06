@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DoggieCard extends StatelessWidget {
-  final image;
-  final doggieName;
-  final city;
-  final state;
+  final String image;
+  final String doggieName;
+  final String city;
+  final String state;
 
   const DoggieCard(
     this.image,
@@ -30,7 +30,7 @@ class DoggieCard extends StatelessWidget {
           right: 16,
           left: 16,
           child: Container(
-            padding: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
                 color: Colors.black.withAlpha(50),
                 borderRadius: BorderRadius.circular(10)),
@@ -40,7 +40,7 @@ class DoggieCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Text(
                     doggieName,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Lato-Regular",
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class DoggieCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: Text(
                       city + ", " + state,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Lato-Regular",
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

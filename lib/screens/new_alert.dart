@@ -1,10 +1,8 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/painting.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/phone_number.dart';
 import 'package:patitas_a_casa/notification_api.dart';
 
 class NewAlert extends StatefulWidget {
@@ -21,9 +19,9 @@ class _NewAlertState extends State<NewAlert> {
   late String lastView;
   late String email;
   late String doggieDescription;
-  late var phoneNumber;
+  late PhoneNumber phoneNumber;
 
-  late XFile? imageFile = null;
+  XFile? imageFile;
   final ImagePicker picker = ImagePicker();
 
   @override
@@ -40,7 +38,7 @@ class _NewAlertState extends State<NewAlert> {
         backgroundColor: Colors.orange,
         leadingWidth: 72,
         leading: TextButton(
-          child: Text(
+          child: const Text(
             "Cancelar",
             style: TextStyle(
               color: Colors.white,
@@ -55,22 +53,22 @@ class _NewAlertState extends State<NewAlert> {
       body: Form(
         key: formKey,
         child: ListView(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           children: [
             buildImage(),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildDoggieName("Doggiename"),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildAge("Edad"),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildLastView("Lugar de extravío"),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildEmail("Correo"),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildPhoneNumber("Número de teléfono"),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             buildDescription("Introduce una breve descripción"),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             submit("Crear alerta"),
           ],
         ),
@@ -83,7 +81,7 @@ class _NewAlertState extends State<NewAlert> {
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: title,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -103,7 +101,7 @@ class _NewAlertState extends State<NewAlert> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: title,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -124,7 +122,7 @@ class _NewAlertState extends State<NewAlert> {
     return TextFormField(
       decoration: InputDecoration(
         labelText: title,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -142,7 +140,7 @@ class _NewAlertState extends State<NewAlert> {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: title,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -164,7 +162,7 @@ class _NewAlertState extends State<NewAlert> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: title,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       initialCountryCode: 'MX',
       searchText: "Buscar por país",
@@ -179,7 +177,7 @@ class _NewAlertState extends State<NewAlert> {
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: title,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -193,7 +191,7 @@ class _NewAlertState extends State<NewAlert> {
   }
 
   Widget buildImage() {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 300,
       child: InkWell(
@@ -203,7 +201,7 @@ class _NewAlertState extends State<NewAlert> {
         child: Image(
           fit: BoxFit.contain,
           image: imageFile == null
-              ? AssetImage("assets/img/default2.jpg")
+              ? const AssetImage("assets/img/default2.jpg")
               : Image.file(
                   File(imageFile!.path),
                 ).image,
@@ -236,7 +234,7 @@ class _NewAlertState extends State<NewAlert> {
           );
         }
       },
-      child: Text(
+      child: const Text(
         "Submit",
         style: TextStyle(
           fontFamily: "Lato-Regular",

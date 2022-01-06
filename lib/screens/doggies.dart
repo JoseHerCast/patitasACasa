@@ -1,9 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/painting.dart';
-import 'package:patitas_a_casa/login.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import '../doggie_card.dart';
 
 class Doggies extends StatelessWidget {
@@ -31,7 +26,7 @@ class Doggies extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            child: DoggieCard(
+            child: const DoggieCard(
                 "assets/img/doggie1.jpg", "Lui", "Chalco", "Edo. de Mexico"),
           ),
           Card(
@@ -41,7 +36,7 @@ class Doggies extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            child: DoggieCard(
+            child: const DoggieCard(
                 "assets/img/doggie2.jpg", "Tobi", "La paz", "Edo. de Mexico"),
           ),
           Card(
@@ -51,8 +46,8 @@ class Doggies extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            child: DoggieCard("assets/img/doggie3.jpg", "Bongo", "Ixtapaluca",
-                "Edo. de Mexico"),
+            child: const DoggieCard("assets/img/doggie3.jpg", "Bongo",
+                "Ixtapaluca", "Edo. de Mexico"),
           ),
           Card(
             shadowColor: Colors.grey,
@@ -61,8 +56,8 @@ class Doggies extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            child: DoggieCard("assets/img/doggie4.jpg", "Coco", "Ixtapaluca",
-                "Edo. de Mexico"),
+            child: const DoggieCard("assets/img/doggie4.jpg", "Coco",
+                "Ixtapaluca", "Edo. de Mexico"),
           ),
           Card(
             shadowColor: Colors.grey,
@@ -71,7 +66,7 @@ class Doggies extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            child: DoggieCard(
+            child: const DoggieCard(
                 "assets/img/doggie5.jpg", "Rulo", "Iztapalapa", "CDMX"),
           ),
           Card(
@@ -81,7 +76,7 @@ class Doggies extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
-            child: DoggieCard(
+            child: const DoggieCard(
                 "assets/img/doggie6.jpg", "Keily", "Iztacalco", "CDMX"),
           ),
         ],

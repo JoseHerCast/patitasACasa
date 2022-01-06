@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:patitas_a_casa/notification_api.dart';
-//import 'screens/settings.dart';
 import 'screens/notifications.dart';
 import 'screens/profile.dart';
-//import 'screens/search.dart';
-
 import 'screens/home.dart';
 
 class PatitasACasa extends StatefulWidget {
@@ -25,6 +22,7 @@ class _PatitasACasaState extends State<PatitasACasa> {
     const Profile(),
   ];
 
+  @override
   void initState() {
     super.initState();
     NotificationApi.init();
