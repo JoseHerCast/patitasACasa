@@ -119,6 +119,7 @@ flutter:
     - assets/img/patitas.png
     - assets/img/default.jpeg
     - assets/img/default2.jpg
+    - assets/img/notification.jpg
   
   fonts:
     - family: Lato

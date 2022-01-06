@@ -40,6 +40,7 @@ class _PatitasACasaState extends State<PatitasACasa> {
           primaryColor: Colors.purple,
         ),
         child: BottomNavigationBar(
+          selectedItemColor: Colors.orangeAccent,
           //Acción
           onTap: (int index) {
             setState(() {
