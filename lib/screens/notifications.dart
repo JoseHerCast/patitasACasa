@@ -9,7 +9,7 @@ class Notifications extends StatelessWidget {
     return ListView(
       children: [
         Column(
-          children: [
+          children: const [
             NotificationCard(
               message:
                   "El usuario UserName ha emitido una alerta para el doggie DoggieName",
