@@ -1,16 +1,13 @@
 # Patitas A Casa
 
-A new Flutter project.
+Aplicación para ayudar a encontrar mascotas extraviadas.
 
-## Getting Started
+## Proyecto Final de Cómputo Móvil
 
-This project is a starting point for a Flutter application.
+Este proyecto está desarrollado en el framework Flutter por:
 
-A few resources to get you started if this is your first Flutter project:
+-José Andrés Lucatero Tenorio [@valiantlucatero](https://github.com/ValiantLucatero)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+-José de Jesús Hernández Castro [@JoseHerCast](https://github.com/JoseHerCast)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Minerva Llamas [@kokoroficial](https://github.com/kokoroficial)
